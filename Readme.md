@@ -40,36 +40,36 @@ version:  '3.3'
 
 services:
 db:
-	container_name:  db
-	image:  mysql:5.7
-	restart:  always
-	environment:
-	MYSQL_USER:  'test'
-	MYSQL_PASSWORD:  '9908'
-	MYSQL_DATABASE:  'infragame'
-	MYSQL_ALLOW_EMPTY_PASSWORD:  1
-	ports:
-	-  3306:3306
-	hostname:  mysql
+    container_name:  db
+    image:  mysql:5.7
+    restart:  always
+    environment:
+    MYSQL_USER:  'test'
+    MYSQL_PASSWORD:  '9908'
+    MYSQL_DATABASE:  'infragame'
+    MYSQL_ALLOW_EMPTY_PASSWORD:  1
+    ports:
+    -  3306:3306
+    hostname:  mysql
 
 server:
-	build:  ./middleware-develop
-	container_name:  express
-	ports:
-	-  5000:5000
-	volumes:
-	-  ./middleware-develop:/home/node/app/
-	command:  npm run start
+    build:  ./middleware-develop
+    container_name:  express
+    ports:
+    -  5000:5000
+    volumes:
+    -  ./middleware-develop:/home/node/app/
+    command:  npm run start
 
 client:
-	build:  ./Interface-develop/
-	container_name:  react
-	ports:
-	-  3000:3000
-	volumes:
-	-  ./Interface-develop/src:/app/src
-	-  ./Interface-develop/public:/app/public
-	command:  npm run start -openssl-legacy-provider
+    build:  ./Interface-develop/
+    container_name:  react
+    ports:
+    -  3000:3000
+    volumes:
+    -  ./Interface-develop/src:/app/src
+    -  ./Interface-develop/public:/app/public
+    command:  npm run start -openssl-legacy-provider
 ```
 
 Il est donc composé des trois containers nommés *db*, *express* et *react* 
