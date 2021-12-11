@@ -8,8 +8,8 @@ Environnement de production Docker-Compose pour le projet InfraGame
 1.  [Description](#Description)
 2.  [Docker-compose](#Docker-compose)
 3.  [DockerFile](#DockerFile)
-4.  [Auteur](#Author)
-5.  [Version](#Version-History)
+4.  [Auteur](#Auteur)
+5.  [Version](#Version)
 
 ## Description
 
