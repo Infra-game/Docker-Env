@@ -7,8 +7,8 @@ services:
     environment:
       MYSQL_USER: 'test'
       MYSQL_PASSWORD: '9908'
-      MYSQL_DATABASE: 'infragame'
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_DATABASE: 'infragame_dev'
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     ports:
       - 3306:3306
     hostname: mysql
@@ -16,19 +16,22 @@ services:
   server:
     build: ./middleware-develop
     container_name: express
+    depends_on:
+      - "db"
+    links:
+      - db
     ports:
       - 5000:5000
     volumes:
       - ./middleware-develop:/home/node/app/
     command: npm run start
-
   client:
     build: ./Interface-develop/
     container_name: react
     ports:
       - 3000:3000
+    links:
+      - server
     volumes:
       - ./Interface-develop/src:/app/src
       - ./Interface-develop/public:/app/public
-    command: npm run start -openssl-legacy-provider
-  
